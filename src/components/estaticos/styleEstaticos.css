@@ -1,0 +1,34 @@
+nav{
+    background-color: #cfadf7;
+    padding: 10px;  
+    color: azure;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    align-items: center;
+}
+.link{
+    color: white;
+    text-decoration: none;
+}
+
+footer{
+    background-color: #cfadf7;
+    padding: 10px;  
+    color: azure;
+    text-align: center;
+    margin-top: 20px;
+}
+.btnCart{
+    background-color: transparent;
+    border: none;
+}
+
+.fa-trash-o{
+    color: rgb(245, 238, 238);
+    font-size: 20px;
+}
