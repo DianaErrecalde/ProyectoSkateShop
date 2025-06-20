@@ -1,20 +1,20 @@
-import Product from './Product'
+import Product from "./Product";
 
-const ProductList = ({products,agregarCarrito }) => {
-  console.log('products:', products);
-
+const ProductList = ({ products, agregarCarrito }) => {
   return (
     <>
-    <h2>Lista de Productos</h2>
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
-      {products.map(product => (
-        <Product key={product.id} 
-    product={product} 
-    addToCart={addToCart} agregarCarrito={agregarCarrito} />
-      ))}
-    </div>
-  </>
-  )
-}
+      <h2 style={{ textAlign: "center", margin: "20px 0" }}>Lista de Productos</h2>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+        {products.map((product, index) => (
+          <Product
+            key={product.id}
+            product={product}
+            agregarCarrito={agregarCarrito}
+          />
+        ))}
+      </div>
+    </>
+  );
+};
 
-export default ProductList
+export default ProductList;

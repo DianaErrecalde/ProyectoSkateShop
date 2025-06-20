@@ -1,7 +1,7 @@
 import React from "react";
 import './styleCart.css'; 
 
-const Cart = ({ cartItems, isOpen, onClose}) => {
+const Cart = ({ cart, isOpen, onClose}) => {
 
   return (
     <div className={`cart-drawer ${isOpen ? 'open' : ''}`}>
@@ -11,11 +11,11 @@ const Cart = ({ cartItems, isOpen, onClose}) => {
       </div>
 
       <div className="cart-content">
-      {cartItems.length === 0 ? (
+      {cart && cart.length < 1 ? (
         <p style={{ color: "red" }}>El carrito esta vacio</p>
       ) : (
         <ul className="cart-items">
-          {cartItems.map((item, index) => (
+          {cart &&cart.map((item, index) => (
             <>
               <li key={item.id} style={{ color: "black" }}>
                 {item.name} - ${item.price}

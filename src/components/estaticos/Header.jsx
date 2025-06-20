@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./styleEstaticos.css";
 import Cart from "../Cart";
 
-const Header = ({ cartItems }) => {
+const Header = ({ cart }) => {
   const [isCartOpen, setCartOpen] = useState(false);
 
   return (
@@ -23,21 +23,20 @@ const Header = ({ cartItems }) => {
             <Link to="/" className="link"></Link>Contacto
           </li>
           <li>
-            <Link to="/" className="link"></Link>Carrito: {countItem}
+            <Link to="/" className="link"></Link>Carrito: {cart?.lenght || 0}
           </li>
           <li className="cartNav">
             <button className="btnCart" onClick={() => setCartOpen(true)}>
               <i class="fa fa-trash-o" aria-hidden="true"></i>
             </button>
             <Cart
-              cartItems={cartItems}
+              cart={cart}
               isOpen={isCartOpen}
               onClose={() => setCartOpen(false)}
             />
           </li>
         </ul>
       </nav>
-      <h1>Skateshop Shock Wave</h1>
     </header>
   );
 };

@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
-import'./styleProductos.css';
+import React, { useState } from "react";
+import "./styleProductos.css";
 
-
-const Product = ({ product, agregarCarrito}) => {
+const Product = ({ product, agregarCarrito }) => {
   const [cantidad, setCantidad] = useState(1);
-  const increase = () => setCantidad(prev => (prev < product.stock ? prev + 1 : prev));
-  const decrease = () => setCantidad(prev => (prev > 1 ? prev - 1 : prev));
-
+  const increase = () => setCantidad(console.log(product));
+  const decrease = () => setCantidad(console.log(product));
 
   return (
     <section className="card">
@@ -19,14 +17,20 @@ const Product = ({ product, agregarCarrito}) => {
       <p className="stock">{product.stock}</p>
 
       <div className="cantidadConteiner">
-        <button className="qtyButton">-</button>
+        <button className="qtyButton" onClick={() => decrease(product)}>
+          -
+        </button>
         <span>
           {product.name} - ${product.price}
         </span>
-        <button className="qtyButton" onClick={() => addToCart(product)}>Add to Cart +</button>
+        <button className="qtyButton" onClick={() => increase(product)}>
+          +
+        </button>
       </div>
 
-      <buttoon onClick= {()=> agregarCarrito=(product)}>Agregar al Carrito</buttoon>
+      <button onClick={() => (agregarCarrito = product)}>
+        Agregar al Carrito
+      </button>
     </section>
   );
 };
