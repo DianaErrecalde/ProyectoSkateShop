@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import "./styleProductos.css";
 
 const Product = ({ product, agregarCarrito }) => {
+
   const [cantidad, setCantidad] = useState(1);
   const increase = () => setCantidad(console.log(product));
   const decrease = () => setCantidad(console.log(product));
 
+  //El componente Product se encargará de mostrar la información de cada producto individualmente.  
   return (
     <section className="card">
-      <div src="imagencontainer">
+      <div src="imagenContainer">
         <img src={product.imagen} alt="" className="imagen" />
       </div>
 

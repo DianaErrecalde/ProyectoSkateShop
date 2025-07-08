@@ -8,7 +8,7 @@ const Home = ({ products, cargando, cart, agregarCarrito }) => {
     <>
       <Header cart={cart} />
       <main>
-        <h1 style={{ textAlign: "center", margin: "20px 0" }}>Skateshop Shock Wave</h1>
+        <h1 style={{ textAlign: "center", margin: "20px 0" }}>Skateshop</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
           cumque, quia libero in minima beatae ex maxime consectetur qui

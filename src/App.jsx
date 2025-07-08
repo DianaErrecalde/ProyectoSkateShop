@@ -1,18 +1,30 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./layout/Home";
 import Contactos from "./layout/Contactos";
 import AcercaDe from "./layout/AcercaDe";
 import GaleriaDeProductos from "./layout/GaleriaDeProductos";
-import NotFound from "./layout/NotFound";
-import Data from "../public/Data"; // Importa los datos de productos
+import NotFound from "./layout/NotFound"
 
 //componente padre de home
 function App() {
-  const [cart, setCart] = useState([]);
-  const [products, setProducts] = useState(Data);
+  const [cart, setCart] = useState([]); //estado de lo que se agrega al carrito
+  const [products, setProducts] = useState([]);// Estado para almacenar los productos
   const [cargando, setCargando] = useState(false); // Estado para controlar la carga de productos
+  const [error, setError] = useState(null); // Estado para manejar errores
+
+  useEffect(()=>{
+    fetch('https://6844866e71eb5d1be03386de.mockapi.io/productos-ecommerce/productos')
+    .then((respuesta)=> respuesta.json())
+    .then((datos)=> {
+      setProducts(datos)
+      setCargando(false)
+    })
+    .catch((error)=>{console.error('Error al cargar los productos:', error) 
+      setCargando(false)
+    });
+  },[]);
 
   const handleAddToCart = (product) => {
     const productInCart = cart.find((item) => item.id === product.id);
@@ -32,14 +44,8 @@ function App() {
   };
 
   return (
-    <Router>
       <Routes>
-        <Route
-          exact
-          path="/"
-          element={
-            <Home
-              agregarCarrito={handleAddToCart}
+        <Route exact path="/" element={<Home agregarCarrito={handleAddToCart} 
               cart={cart}
               products={products}
               cargando={cargando}
@@ -49,11 +55,7 @@ function App() {
 
         <Route path="/acercade" element={<AcercaDe carts={cart} />} />
 
-        <Route
-          path="/productos"
-          element={
-            <GaleriaDeProductos
-              agregarCarrito={handleAddToCart}
+        <Route path="/productos" element={<GaleriaDeProductos agregarCarrito={handleAddToCart}
               carts={cart}
               products={products}
               cargando={cargando}
@@ -65,9 +67,8 @@ function App() {
 
         <Route path="/**" element={<NotFound />} />
       </Routes>
-    </Router>
+
   );
 }
 
 export default App;
-

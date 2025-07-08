@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./styleEstaticos.css";
 import Cart from "../Cart";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 const Header = ({ cart }) => {
   const [isCartOpen, setCartOpen] = useState(false);
 
@@ -23,11 +24,11 @@ const Header = ({ cart }) => {
             <Link to="/" className="link"></Link>Contacto
           </li>
           <li>
-            <Link to="/" className="link"></Link>Carrito: {cart?.lenght || 0}
+            <Link to="/" className="link">Carrito: {cart?.length || 0}</Link>
           </li>
           <li className="cartNav">
             <button className="btnCart" onClick={() => setCartOpen(true)}>
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
+              <FontAwesomeIcon icon={faCartShopping} />
             </button>
             <Cart
               cart={cart}

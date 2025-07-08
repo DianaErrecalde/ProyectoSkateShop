@@ -4,7 +4,7 @@ import './styleCart.css';
 const Cart = ({ cart, isOpen, onClose}) => {
 
   return (
-    <div className={`cart-drawer ${isOpen ? 'open' : ''}`}>
+    <div className={`cart-drawer ${isOpen ? 'open' : ""}`}>
       <div className="cart-header">
         <h2 style={{color:'black'}}>Carritos De Compras</h2>
         <button onClick= {onClose} className="close-button">X</button>
@@ -20,7 +20,7 @@ const Cart = ({ cart, isOpen, onClose}) => {
               <li key={item.id} style={{ color: "black" }}>
                 {item.name} - ${item.price}
                 <button>
-                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                  <i className="fa fa-trash-o" ></i>
                 </button>
               </li>
             </>

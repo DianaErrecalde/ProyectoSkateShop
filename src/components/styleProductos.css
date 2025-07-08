@@ -9,7 +9,7 @@
     transition: box-shadow 0.3s ease;
 }
 
-imagenContained{
+.imagenContainer{
     width: 100%;
     height: 200px;
     background-color: #e9ecef;
