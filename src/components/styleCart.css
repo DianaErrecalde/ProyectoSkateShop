@@ -2,8 +2,9 @@
     position: fixed;
     top:0;
     right: 0;
-    width: 300px;
+    width: 500px;
     height: 100%;
+    padding: 16px;
     background-color: aliceblue;
     color:rgb(235, 151, 151);
     box-shadow: -2px 0 5px rgba(0,0,0,0.1);
@@ -21,13 +22,8 @@
     display: flex;
     justify-content: space-around;
     align-items:center;
-    padding: 16px;
-    border-bottom: 1px solid #ddd;
-    background-color: #f8f8f8;
-}
-
-.cart.content{
-    padding: 16px;
+    border-bottom: 1px solid #af2c2c;
+    background-color: #883d3d;
 }
 
 .close-button{

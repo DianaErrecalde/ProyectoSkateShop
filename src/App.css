@@ -13,8 +13,9 @@
   align-items: center;
 }
 
-.main{
-  padding: 20px;
+main{
+  padding: 80px;
+  scroll-behavior: smooth;
 }
 
 ul{

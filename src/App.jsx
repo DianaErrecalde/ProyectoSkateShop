@@ -1,73 +1,30 @@
-import { useState,useEffect } from "react";
+import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./layout/Home";
 import Contactos from "./layout/Contactos";
 import AcercaDe from "./layout/AcercaDe";
 import GaleriaDeProductos from "./layout/GaleriaDeProductos";
-import NotFound from "./layout/NotFound"
+import NotFound from "./layout/NotFound";
+import { CartProvider } from "./contexts/cartContext";
+import Header from "./components/estaticos/Header";
+import Footer from "./components/estaticos/Footer";
 
 //componente padre de home
 function App() {
-  const [cart, setCart] = useState([]); //estado de lo que se agrega al carrito
-  const [products, setProducts] = useState([]);// Estado para almacenar los productos
-  const [cargando, setCargando] = useState(false); // Estado para controlar la carga de productos
-  const [error, setError] = useState(null); // Estado para manejar errores
-
-  useEffect(()=>{
-    fetch('https://6844866e71eb5d1be03386de.mockapi.io/productos-ecommerce/productos')
-    .then((respuesta)=> respuesta.json())
-    .then((datos)=> {
-      setProducts(datos)
-      setCargando(false)
-    })
-    .catch((error)=>{console.error('Error al cargar los productos:', error) 
-      setCargando(false)
-    });
-  },[]);
-
-  const handleAddToCart = (product) => {
-    const productInCart = cart.find((item) => item.id === product.id);
-    if (productInCart) {
-      // Si el producto ya está en el carrito, incrementa la cantidad
-      setCart(
-        cart.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        )
-      );
-    } else {
-      // Si el producto no está en el carrito, agrégalo con cantidad 1
-      setCart([...cart, { ...product, quantity: 1 }]);
-    }
-  };
 
   return (
-      <Routes>
-        <Route exact path="/" element={<Home agregarCarrito={handleAddToCart} 
-              cart={cart}
-              products={products}
-              cargando={cargando}
-            />
-          }
-        />
-
-        <Route path="/acercade" element={<AcercaDe carts={cart} />} />
-
-        <Route path="/productos" element={<GaleriaDeProductos agregarCarrito={handleAddToCart}
-              carts={cart}
-              products={products}
-              cargando={cargando}
-            />
-          }
-        />
-
-        <Route path="/contacto" element={<Contactos carts={cart} />} />
-
-        <Route path="/**" element={<NotFound />} />
-      </Routes>
-
+    <CartProvider>
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/" element={<GaleriaDeProductos />} />
+          <Route path="/acercade" element={<AcercaDe />} />
+          <Route path="/contacto" element={<Contactos />} />
+          <Route path="/**" element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+    </CartProvider>
   );
 }
 

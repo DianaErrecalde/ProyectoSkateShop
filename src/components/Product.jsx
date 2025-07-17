@@ -1,37 +1,53 @@
 import React, { useState } from "react";
 import "./styleProductos.css";
+import { useCart } from "../contexts/cartContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
-const Product = ({ product, agregarCarrito }) => {
+const Product = ({ product }) => {
+  const [unidades, setUnidades] = useState(0);
+  const { addToCart } = useCart();
 
-  const [cantidad, setCantidad] = useState(1);
-  const increase = () => setCantidad(console.log(product));
-  const decrease = () => setCantidad(console.log(product));
+  const agregarCantidad = () => {
+    if (unidades >= product.stock) {
+      alert("No puedes agregar más de lo que hay en stock");
+      return;
+    }
+    setUnidades(unidades + 1);
+  };
 
-  //El componente Product se encargará de mostrar la información de cada producto individualmente.  
+  const restarCantidad = () => {
+    if (unidades <= 0) {
+      alert("No puedes restar más de lo que tienes");
+      return;
+    }
+    setUnidades(unidades - 1);
+  };
+
   return (
     <section className="card">
-      <div src="imagenContainer">
+      <div className="imagenContainer">
         <img src={product.imagen} alt="" className="imagen" />
       </div>
-
       <h3 className="nombre">{product.nombre}</h3>
-      <p className="precio">${product.precio}</p>
-      <p className="stock">{product.stock}</p>
-
+      <p className="precio">Precio: ${product.precio}</p>
+      <p className="stock">Stock: {product.stock}</p>
       <div className="cantidadConteiner">
-        <button className="qtyButton" onClick={() => decrease(product)}>
-          -
-        </button>
-        <span>
-          {product.name} - ${product.price}
-        </span>
-        <button className="qtyButton" onClick={() => increase(product)}>
-          +
-        </button>
+        <button onClick={restarCantidad}>-</button>
+        <p style={{ color: "black" }}>{unidades}</p>
+        <button onClick={agregarCantidad}>+</button>
       </div>
-
-      <button onClick={() => (agregarCarrito = product)}>
-        Agregar al Carrito
+      <button
+        className="btn-cart"
+        onClick={() => {
+          if (unidades > 0) {
+            addToCart(product, unidades);
+            setUnidades(0);
+          }
+        }}
+      >
+        Agregar
+        <FontAwesomeIcon icon={faCartShopping} />
       </button>
     </section>
   );

@@ -1,21 +1,17 @@
+import React from "react";
 import Product from "./Product";
+import { useCart } from "../contexts/cartContext";
 
+const ProductList = () => {
 
-//productList recive los productos y se encarga de mapearlos para mostrarlos en pantalla como una lista de productos.
-const ProductList = ({ products, agregarCarrito }) => {
+  const { products } = useCart();
+
   return (
-    <>
-      <h2 style={{ textAlign: "center", margin: "20px 0" }}>Lista de Productos</h2>
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-evenly" ,gap: "20px" }}>
-        {products.map((product, index) => (
-          <Product
-            key={product.id}
-            product={product}
-            agregarCarrito={agregarCarrito}
-          />
-        ))}
-      </div>
-    </>
+    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-evenly", gap: "20px" }}>
+      {products.map((product, index) => (
+        <Product key={product.id} product={product} />
+      ))}
+    </div>
   );
 };
 

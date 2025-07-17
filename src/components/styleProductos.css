@@ -68,3 +68,15 @@
     font-weight: 600;
     transition: background-color 0.3s;
 }
+
+.btn-cart{
+    background-color: #34ab0f;
+    color: #a22929;
+    width: 130px;
+    border: none;
+    margin: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}

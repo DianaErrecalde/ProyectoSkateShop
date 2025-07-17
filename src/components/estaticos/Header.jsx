@@ -1,40 +1,34 @@
-import { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./styleEstaticos.css";
 import Cart from "../Cart";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
-const Header = ({ cart }) => {
-  const [isCartOpen, setCartOpen] = useState(false);
+import { useCart } from "../../contexts/cartContext";
+
+const Header = () => {
+
+  const { setOpenCart } = useCart();
 
   return (
     <header>
       <nav style={{ backgroundColor: "#333", color: "white", padding: "10px" }}>
         <ul>
           <li>
-            <Link to="/" className="link"></Link>Inicio
+            <Link to="/" className="link">Inicio</Link>
           </li>
           <li>
-            <Link to="/" className="link"></Link>Nosotros
+            <Link to="/acercade" className="link">Acerca de nosotros</Link>
           </li>
           <li>
-            <Link to="/" className="link"></Link>GaleriaDeProductos
-          </li>
-          <li>
-            <Link to="/" className="link"></Link>Contacto
-          </li>
-          <li>
-            <Link to="/" className="link">Carrito: {cart?.length || 0}</Link>
+            <Link to="/contacto" className="link">Contacto</Link>
           </li>
           <li className="cartNav">
-            <button className="btnCart" onClick={() => setCartOpen(true)}>
-              <FontAwesomeIcon icon={faCartShopping} />
+            <button className="btnCart" onClick={() => setOpenCart(true)}>
+              <span>Carrito</span>
+              <FontAwesomeIcon style={{margin:'2px'}} icon={faCartShopping}/>
             </button>
-            <Cart
-              cart={cart}
-              isOpen={isCartOpen}
-              onClose={() => setCartOpen(false)}
-            />
+            <Cart/>
           </li>
         </ul>
       </nav>

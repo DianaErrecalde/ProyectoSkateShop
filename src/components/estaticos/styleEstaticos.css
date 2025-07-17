@@ -16,19 +16,45 @@ ul{
     text-decoration: none;
 }
 
-footer{
-    background-color: #cfadf7;
-    padding: 10px;  
-    color: azure;
-    text-align: center;
-    margin-top: 20px;
-}
 .btnCart{
     background-color: transparent;
     border: none;
 }
 
-.fa-trash-o{
-    color: rgb(245, 238, 238);
-    font-size: 20px;
+a {
+  color: white;
+  text-decoration: none;
+}
+
+footer {
+  background-color: #cfadf7;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  z-index: 1000;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1000;
+}
+
+.main {
+  background: #f5f5f5;
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 900px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
 }

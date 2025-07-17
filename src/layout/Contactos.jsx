@@ -1,14 +1,7 @@
-import React from 'react'
-import Footer from '../components/estaticos/Footer'
+import React from 'react';
 
-const Contactos = ({cart}) => {
-  return (
-    <>
-    <Header cartItems={cart}/>
-      <h1>Contactos</h1>
-    <Footer/>
-    </>
-  )
+const Contactos = () => {
+  return (<h1>Contactos</h1>)
 }
 
 export default Contactos

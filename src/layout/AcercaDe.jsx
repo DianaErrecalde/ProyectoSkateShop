@@ -1,15 +1,7 @@
-import React from 'react'
-import Header from '../components/estaticos/Header'
-import Footer from '../components/estaticos/Footer'
+import React from 'react';
 
-const AcercaDe = ({cart}) => {
-  return (
-    <>
-    <Header cartItems={cart}/>
-      <h1>Tienda De Productos de skate</h1>
-    <Footer/>
-    </>
-  )
+const AcercaDe = () => {
+  return (<h1>Tienda De Productos de skate</h1>)
 }
 
 export default AcercaDe
